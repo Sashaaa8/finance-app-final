@@ -47,7 +47,7 @@ def login():
             name = st.text_input("First Name", placeholder="John")
             surname = st.text_input("Last Name", placeholder="Doe")
             # --- ВОТ СЮДА МЫ ДОБАВИЛИ ПИН-КОД ---
-            pin = st.text_input("Secret Code (PIN)", type="password", help="Чтобы ваши данные не смешались с чужими")
+            pin = st.text_input("Personal Code (PIN)", type="password", help="To prevent your data from getting mixed up with other user's")
             
             if st.button("Get Started", use_container_width=True, type="primary"):
                 # Добавили проверку 'and pin'
