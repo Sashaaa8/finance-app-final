@@ -40,18 +40,24 @@ if 'user_name' not in st.session_state:
 def login():
     st.markdown("<h1 style='text-align: center;'>💎 Smart Finance Manager</h1>", unsafe_allow_html=True)
     col1, col2, col3 = st.columns([1, 1.5, 1])
+    
     with col2:
         with st.container(border=True):
             st.subheader("Welcome back!")
             name = st.text_input("First Name", placeholder="John")
             surname = st.text_input("Last Name", placeholder="Doe")
+            # --- ВОТ СЮДА МЫ ДОБАВИЛИ ПИН-КОД ---
+            pin = st.text_input("Secret Code (PIN)", type="password", help="Чтобы ваши данные не смешались с чужими")
+            
             if st.button("Get Started", use_container_width=True, type="primary"):
-                if name and surname:
-                    st.session_state.user_name = f"{name} {surname}".strip()
+                # Добавили проверку 'and pin'
+                if name and surname and pin:
+                    # Теперь уникальный ID — это Имя + Фамилия + ПИН
+                    st.session_state.user_name = f"{name} {surname} {pin}".strip()
                     st.session_state.logged_in = True
                     st.rerun()
                 else:
-                    st.error("Please fill in both fields.")
+                    st.error("Please fill in all fields (Name, Surname, and PIN).")
  
 # --- 4. MAIN INTERFACE ---
 if not st.session_state.logged_in:
