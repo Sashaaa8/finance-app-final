@@ -204,4 +204,4 @@ else:
                         all_goals = all_goals.drop(i)
                         save_db(all_goals, GOALS_FILE)
                         st.rerun()
-                    st.caption(f"Target: {goal['Target']} €"
+                    st.caption(f"Target: {goal['Target']} €")
